@@ -12,7 +12,46 @@
 */
 
 class Todo {
+    constructor() {
+        this.todoList = []
+    }
+
+    add(todo){
+        this.todoList.push(todo)
+    }
+
+    remove(index){
+        this.todoList.splice(index , 1)
+    }
+
+    update(index, updatedTodo){
+        this.todoList.splice(index, 1, updatedTodo)
+    }
+
+    getAll(){
+        return this.todoList
+    }
+
+    clear(){
+        this.todoList = []
+    }
 
 }
+
+let todoApp = new Todo()
+
+todoApp.add("first")
+todoApp.add("second")
+console.log(todoApp.getAll())
+todoApp.add("four")
+console.log(todoApp.getAll())
+todoApp.update(2, "three")
+console.log(todoApp.getAll())
+
+todoApp.remove(2)
+console.log(todoApp.getAll())
+
+todoApp.clear()
+console.log(todoApp.getAll())
 
 module.exports = Todo;

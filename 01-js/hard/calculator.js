@@ -17,6 +17,62 @@
   - `npm run test-calculator`
 */
 
-class Calculator {}
+class Calculator {
+    constructor() {
+        this.result = 0
+    }
+
+    add(number){
+        this.result += number
+    }
+
+    subtract(number){
+        this.result -= number
+    }
+
+    multiply(number){
+        this.result *= number
+    }
+
+    divide(number){
+        //this.result = parseInt(''+(this.result / number)) // just integer division
+        this.result /= number
+    }
+
+    clear(){
+        this.result = 0
+    }
+
+    getResult(){
+        return this.result
+    }
+
+    calculate(expression){
+        //remove extra spaces
+        expression = expression.replace(/\s/g, "")
+        let res = 0
+        try{
+            //utilise javascript's internal eval() method to get result
+            res = eval(expression)
+        }catch (e) {
+            // in case of invalid expression
+            return "Invalid Expression"
+        }
+        return res
+    }
+
+
+}
+
+let calc_instance = new Calculator()
+
+calc_instance.add(1)
+calc_instance.multiply(4)
+calc_instance.clear()
+calc_instance.subtract(2)
+calc_instance.divide(3)
+console.log(calc_instance.getResult())
+console.log(calc_instance.calculate("10 +   2 *    (   6 - (4 + 1) / 2) + 7"))
+console.log(calc_instance.calculate("10 +   2 *    (   6 - (abc + 1) / 2) + 7"))
 
 module.exports = Calculator;
