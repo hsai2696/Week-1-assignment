@@ -4,5 +4,14 @@
  */
 
 function sleep (seconds) {
+    let curr_time = new Date().getTime()
+    let wait_till_time = new Date(curr_time + 1000 * seconds)
+
+    while(new Date() <= wait_till_time){
+
+    }
 
 }
+
+sleep(3)
+console.log("After Synchronous sleep ")
